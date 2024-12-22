@@ -1,6 +1,6 @@
 import pg from 'pg'
 import dotenv from 'dotenv'
-import {pipline} from 'node:stream/promises'
+import {pipeline} from 'node:stream/promises'
 import fs from 'node:fs'
 import{from as copyFrom} from 'pg-copy-streams'
 
@@ -23,7 +23,7 @@ export default db;
 const dbResult = await db.query('select now()');
 console.log('Database connection established on', dbResult.rows[0].now);
 await db.query(`
-    drop table if exist Elisa_music
+    drop table if exists Elisa_music;
 
     create table Elisa_music (
     Artist text,
@@ -40,22 +40,22 @@ await db.query(`
     await copyIntoTable(db, `
         copy Elisa_music (Artist,Title, Year)
         from stdin
-        with csv header`, 'db/Eisa_music.csv'); 
+        with csv header`, 'db/Elisa_music.csv'); 
 
-    await db.send();
+    await db.end();
     console.log('data copied');
 
-    async function copyIntoTables(db, sql, file) {
+    async function copyIntoTable(db, sql, file) {
         const client = await db.connect();
         try {
             const ingestStream = client.query(copyFrom(sql))
-            const sourceStream = fs.createReadStrean(file);
-            await pipline(sourceStream, ingestStream);
+            const sourceStream = fs.createReadStream(file);
+            await pipeline(sourceStream, ingestStream);
         } finally {
             client.release();
         }
-        
     };
+    
 
     
 
