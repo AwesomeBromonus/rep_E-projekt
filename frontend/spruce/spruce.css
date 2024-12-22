@@ -1,0 +1,39 @@
+/* spruce = 1*/
+img {
+    border: 5px solid  #414141;
+    border-radius: 8px;
+    box-shadow: 2 8px 12px rgba(0,0,0,0.2);
+    }
+    
+    p {
+        font-family: 'Times New Roman', Times, serif;
+      text-align: center;
+      font-size: xxx-large;
+      font-weight: bold;
+    }
+    
+    .button-gradient1{
+    padding: 12px 24px;
+    font-size: 16px;
+    background: linear-gradient(45deg,#6a11cb,#aa5789);
+    color:white;
+    border-radius: 5px;
+    transition: transform 0.2s;
+    cursor:pointer;
+    }
+    
+    
+    .body1{
+        background: linear-gradient( to bottom, #e7d2e1, #bf5bcf);
+    }
+    
+    .bold-text{
+        font-weight: bold;
+        font-size: larger;
+    }
+    
+    div{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
+    }
+    
