@@ -1,0 +1,92 @@
+
+body {
+    background: linear-gradient(135deg, #bae6d1, #db68c2);
+    min-height: 100vh;
+    font-family: 'Times New Roman', Times, serif, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+h1 {
+    font-size: 4em;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+
+#album-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    max-width: 1200px;
+    width: 100%;
+}
+
+
+.album {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.album:hover {
+    transform: scale(1.03);
+}
+
+.album h2 {
+    font-size: 1.2em;
+    margin-top: 0;
+    color: #333;
+}
+
+.album p {
+    margin: 5px 0;
+}
+
+.album a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.album a:hover {
+    text-decoration: underline;
+}
+
+
+.toggle-btn {
+    background-color: #b01a95;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 4px;
+    font-size: 0.9em;
+    transition: background-color 0.2s;
+}
+
+.toggle-btn:hover {
+    background-color: #b30000;
+}
+
+
+.tracklist {
+    margin-top: 10px;
+    display: none; 
+}
+
+.track {
+    font-size: 0.9em;
+    color: #666;
+}
