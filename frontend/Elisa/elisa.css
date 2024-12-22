@@ -1,11 +1,14 @@
 .table{
     display: block;
-    
-    border: 1px solid black;
-    background-color: red;
-    color: aqua;
+    width: auto;
+   
+   
     border-radius: 20px;
     padding-left: 45%;
+    border-collapse: collapse;
+    text-align: center;
+
+
    
   
 
@@ -13,21 +16,22 @@
 
 th{
     box-shadow: 10px;
-    background-color: black;
     border: 1px solid black;
-    padding: 1px;
-   
-
-  
-
-  
+    text-align: center;
+    border-collapse: collapse;
+    font-size: 175%;
+    width: auto;
+    padding: 1em;
+    color: rgb(228, 193, 245);
 }
 
 td{
     box-shadow: 10px;
-    border-radius: 20px;
     border: 1px solid black;
-  
-
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 150%;
+    width: auto;
+    color: rgb(0, 0, 0);
 }
 
