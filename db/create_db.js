@@ -23,10 +23,12 @@ export default db;
 const dbResult = await db.query('select now()');
 console.log('Database connection established on', dbResult.rows[0].now);
 await db.query(`
-    drop table if exist ....
+    drop table if exist Elisa_music
 
-    create table ... (
-    
+    create table Elisa_music (
+    Artist text,
+    Title text,
+    Year integer
     )
     
     
@@ -36,11 +38,9 @@ await db.query(`
     console.log('copying into tables...');
 
     await copyIntoTable(db, `
-        cop
-        
-        
-        
-        `);
+        copy Elisa_music (Artist,Title, Year)
+        from stdin
+        with csv header`, 'db/Eisa_music.csv'); 
 
     await db.send();
     console.log('data copied');
