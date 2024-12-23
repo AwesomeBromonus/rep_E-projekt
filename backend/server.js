@@ -1,13 +1,14 @@
 import express from 'express';
 import pg from "pg";
 import dotenv from 'dotenv';
+import { xml } from 'd3';
 
 dotenv.config();
 console.log('Connecting to database...');
 
-const db = new pg.pool({
+const db = new pg.Pool({
     host: process.env.PG_HOST,
-    port: parseInt(process.env.PG_PORT),
+    port: parseInt(process.env.PG_PORT, 10),
     database: process.env.PG_DATABASE,
     user: process.env.PG_USER,
     password: process.env.PG_PASSWORD,
@@ -16,6 +17,7 @@ const db = new pg.pool({
     }: undefined,
 });
 
+async function startServer(){
 try { 
     const dbResult = await db.query('select now() as now');
     console.log('Database connection established on', dbResult.rows[0].now);
@@ -23,7 +25,7 @@ try {
         console.error('Database connection error', err);
     }
 
-    const port = process.env.Port || 3000;
+    const port = process.env.PORT|| 3001;
     const server = express();
 
 server.use(express.static('frontend'));
@@ -37,8 +39,17 @@ server.get('api/Elisa_music', async (req,res) => {
         const dbResult = await db.query(`
             select * from Elisa_music 
             `);
+        res.json(dbResult.rows);
 
     }catch (err) {
-        console.log( 'error fetching data from the database')
+        console.log( 'error fetching data from the database',err);
+        
     }
-});
+})
+
+server.listen(port,()=> {
+    console.log(`Server is running on http://localhost:${port}`)
+})
+};
+
+startServer();
