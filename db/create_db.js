@@ -38,7 +38,7 @@ await db.query(`
     console.log('copying into tables...');
 
     await copyIntoTable(db, `
-        copy Elisa_music (Artist,Title, Year)
+        copy Elisa_music (Artist,Title,Year)
         from stdin
         with csv header`, 'db/Elisa_music.csv'); 
 

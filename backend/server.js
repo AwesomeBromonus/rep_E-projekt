@@ -1,7 +1,7 @@
 import express from 'express';
 import pg from "pg";
 import dotenv from 'dotenv';
-import { xml } from 'd3';
+
 
 dotenv.config();
 console.log('Connecting to database...');
@@ -34,16 +34,16 @@ server.use((req,res,next)=>{console.log(new Date(), req.method, req.url);
 });
 
 
-server.get('api/Elisa_music', async (req,res) => {
+server.get('/api/Elisa_music', async (req,res) => {
     try{
         const dbResult = await db.query(`
-            select * from Elisa_music 
+            select Artist, Title, Year from Elisa_music 
             `);
         res.json(dbResult.rows);
 
     }catch (err) {
         console.log( 'error fetching data from the database',err);
-        
+        res.status(500).send('An error occurred while fetching data.');
     }
 })
 
